@@ -1,6 +1,6 @@
 var tmsFolder = '../curtms/';
 var dataFolder = './data/';
-// https://raw.githubusercontent.com/daveism/daveisms-assets/master/';
+//var dataFolder = 'https://raw.githubusercontent.com/daveism/daveisms-assets/master/';
 
 var map = L.tileLayer('http://api.tiles.mapbox.com/v3/daveism.oo0p88l4/{z}/{x}/{y}.png', {
   attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
@@ -72,6 +72,17 @@ $( "input[type=checkbox]" ).click(function( event ) {
     } ;
  });
 
+
+$( "#changeLyr[type=button]" ).click(function( event ) {
+   if (map.hasLayer(geojsonLayer)) {
+      map.removeLayer(geojsonLayer);
+   }
+   else{
+
+      map.addLayer(geojsonLayer);
+   } ;
+ });
+
  $( ".btn-group [type=button]" ).click(function( event ) {
     map.removeLayer(image);
    if(this.value == 'sat'){
@@ -87,13 +98,16 @@ $( "input[type=checkbox]" ).click(function( event ) {
   var changeCount = 0
   var curpoint = 0
   var geoJSON = '';
+  var geojsonLayer;
 
 $.getJSON(dataFolder + "swir_areas.geojson", function(response) {
     console.log("response", response);
-    var geojsonLayer = new L.GeoJSON(response);
+    geojsonLayer = new L.GeoJSON(response);
     geojsonLayer.addTo(map);
     geoJSON = response;
     changeCount = geoJSON.features.length;
+    map.removeLayer(geojsonLayer);
+
 });
 
 var getNextChange = function(){
