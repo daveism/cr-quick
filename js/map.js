@@ -1,5 +1,6 @@
 var tmsFolder = '../curtms/';
-var dataFolder = 'https://raw.githubusercontent.com/daveism/daveisms-assets/master/';
+var dataFolder = './data';
+// https://raw.githubusercontent.com/daveism/daveisms-assets/master/';
 
 var map = L.tileLayer('http://api.tiles.mapbox.com/v3/daveism.oo0p88l4/{z}/{x}/{y}.png', {
   attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
