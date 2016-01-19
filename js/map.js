@@ -1,5 +1,5 @@
 var tmsFolder = '../curtms/';
-var dataFolder = './data';
+var dataFolder = './data/';
 // https://raw.githubusercontent.com/daveism/daveisms-assets/master/';
 
 var map = L.tileLayer('http://api.tiles.mapbox.com/v3/daveism.oo0p88l4/{z}/{x}/{y}.png', {
