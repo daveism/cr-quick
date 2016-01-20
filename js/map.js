@@ -54,15 +54,10 @@ var overlayMaps = {
 };
 
 var ctrl =  L.control.layers(baseMaps, overlayMaps).addTo(map);
-
-//map.fitBounds(overlayMaps);
-
+map.removeLayer(map);
+ 
 $( "input[type=checkbox]" ).click(function( event ) {
     layerClicked = window[event.target.value];
-    //alert(JSON.stringify(layerClicked));
-    // map.removeLayer(ndvi);
-    // map.removeLayer(ndmi);
-    // map.removeLayer(swir);
     if (map.hasLayer(layerClicked)) {
        map.removeLayer(layerClicked);
     }
@@ -72,28 +67,28 @@ $( "input[type=checkbox]" ).click(function( event ) {
     } ;
  });
 
-
+ //change geosjson layer
 $( "#changeLyr[type=button]" ).click(function( event ) {
    if (map.hasLayer(geojsonLayer)) {
       map.removeLayer(geojsonLayer);
    }
    else{
-
       map.addLayer(geojsonLayer);
    } ;
  });
 
- $( ".btn-group [type=button]" ).click(function( event ) {
+//base map toggle
+$( ".btn-group label" ).click(function( event ) {
+  map.removeLayer(image);
+  if(this.id == 'basesat'){
+    map.addLayer(image);
+    map.removeLayer(map);
+  }
+  if(this.id == 'basemap'){
+    map.addLayer(map);
     map.removeLayer(image);
-   if(this.value == 'sat'){
-         map.addLayer(image);
-         map.removeLayer(map);
-   }
-   if(this.value == 'map'){
-         map.addLayer(map);
-         map.removeLayer(image);
-   }
-  });
+  }
+});
 
   var changeCount = 0
   var curpoint = 0
@@ -113,7 +108,6 @@ var getNextChange = function(){
   if(curpoint=>changeCount){
     curpoint++;
     $("#currval").html('Change Feaute:' + curpoint)
-    //var t = geoJSON.features[curpoint]
     var centroidPt = turf.centroid(geoJSON.features[curpoint]);
     console.log(JSON.stringify(centroidPt))
     map.setView([ centroidPt.geometry.coordinates[1] , centroidPt.geometry.coordinates[0]],15);

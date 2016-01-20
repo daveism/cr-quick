@@ -86,16 +86,24 @@
             </label>
           </div>
           <div>
+
               <span class="pull-right">
-                <button type="button"  class="btn btn-default" onclick="getNextChange()" >Next change</button>
-                <button type="button"  class="btn btn-default" onclick="getPevChange()" >Previous change</button>
+                <button type="button" name="change" class="btn btn-default" onclick="getNextChange()" >Next change</button>
+                <button type="button" name="change" class="btn btn-default" onclick="getPevChange()" >Previous change</button>
               </span>
 
             </div>
 
-            <div class="btn-group" role="group" aria-label="..">
-              <button type="button" value="sat" class="btn btn-default"  autofocus="true" >Satellite</button>
-              <button type="button" value="map" class="btn btn-default" >Basic Map</button>
+
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-default active" value="sat" id="basesat" >
+                <input type="radio" value="sat" name="change" id="sat" autocomplete="off" checked>
+                 Satellite
+              </label>
+              <label class="btn btn-default" value="map" id="basemap" >
+                <input type="radio" value="map" name="change" id="map" autocomplete="off">
+                Baisc Map
+              </label>
             </div>
 
             <div>
