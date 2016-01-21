@@ -2,6 +2,31 @@ var tmsFolder = 'file:///Users/daveism/curtms/';
 var dataFolder = './data/';
 var dataFolder = 'https://raw.githubusercontent.com/daveism/daveisms-assets/master/';
 
+var Date_WMS1 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-swir-allchange?TIME=2015-12-20", {
+  layers: 'SWIR-archiveCloudGap',
+  format: 'image/png',
+  transparent: true,
+  attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
+  maxZoom: 15
+});
+
+var Date_WMS2 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-swir-allchange?TIME=2015-12-04", {
+  layers: 'SWIR-archiveCloudGap',
+  format: 'image/png',
+  transparent: true,
+  attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
+  maxZoom: 15
+});
+
+var Date_WMS3 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-swir-allchange?TIME=2015-10-17", {
+  layers: 'SWIR-archiveCloudGap',
+  format: 'image/png',
+  transparent: true,
+  attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
+  maxZoom: 15
+});
+
+
 var swirwms = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/custom-request?AOI_ID=290", {
   layers: 'swir-th-archive',
   format: 'image/png',
@@ -65,7 +90,8 @@ var baseMaps = {
 var map = L.map('map',{
   center: [36.730,-81.859],
   zoom: 13,
-  layers: [image]
+  layers: [image],
+  crs: 	L.CRS.EPSG900913
 });
 
 var overlayMaps = {
@@ -74,8 +100,47 @@ var overlayMaps = {
   "SWIR": swir,
   "SWIR(wms)":swirwms,
   "NDMI(wms)":ndmiwms,
-  "NDVI(wms)":ndviwms
+  "NDVI(wms)":ndviwms,
+  "datewms1":Date_WMS1,
+  "datewms2":Date_WMS2,
+  "datewms3":Date_WMS3
 };
+var doAnimate;
+$("input[value=doAnimate]").click(function( event ) {
+  if(doAnimate){
+    doAnimate = false;
+  }else{
+    doAnimate = true;
+    map.addLayer(Date_WMS1);
+  }
+
+  cnt=2;
+  maxCnt=3;
+
+  (function next() {
+      if (!doAnimate) return;
+      setTimeout(function() {
+            if(cnt===1){
+              map.removeLayer(Date_WMS3)
+              map.removeLayer(Date_WMS2)
+              map.addLayer(Date_WMS1)
+            }
+            if(cnt===2){
+              map.removeLayer(Date_WMS1)
+              map.removeLayer(Date_WMS3)
+              map.addLayer(Date_WMS2)
+            }
+            if(cnt===3){
+              map.removeLayer(Date_WMS1)
+              map.removeLayer(Date_WMS2)
+              map.addLayer(Date_WMS3)
+            }
+            cnt++;
+            if(cnt===maxCnt){cnt=1}
+          next();
+      }, 3000);
+  })();
+});
 
 $( "input[type=checkbox]" ).click(function( event ) {
   layerClicked = window[event.target.value];
@@ -86,6 +151,7 @@ $( "input[type=checkbox]" ).click(function( event ) {
     map.addLayer(layerClicked);
   } ;
 });
+
 
 //change geosjson layer
 $( "#changeLyr[type=button]" ).click(function( event ) {
@@ -143,3 +209,8 @@ var getPevChange = function(){
     map.setView([ centroidPt.geometry.coordinates[1] , centroidPt.geometry.coordinates[0]],15);
   }
 }
+
+
+
+
+//$("input[value=Date_WMS3]").click()
