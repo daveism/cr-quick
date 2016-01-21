@@ -1,133 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <title>Landsat FACT Custom Request - Viewer</title></title>
+  <title>Landsat FACT Custom Request - Viewer</title></title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
 
-      <!-- Add custom CSS here -->
-    <link href="css/shop-item.css" rel="stylesheet">
+  <!-- Add custom CSS here -->
+  <link href="css/shop-item.css" rel="stylesheet">
 
-    <!-- leaflet js/css -->
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
-    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+  <!-- leaflet js/css -->
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+  <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 
+  <style>
+  #map {  position:relative; width:100%; height: 467px; }
+  </style>
+</head>
 
-    <style>
-      #map {  position:relative; width:100%; height: 467px; }
-    </style>
-  </head>
-
-  <body>
-
-
-    <div class="container">
-
-      <div class="row">
-
-        <div class="col-md-4">
-
-          <div class="well well-lg">
-            <h2 class="text-center">A Simple Way to</h2>
-            <h2 class="text-center">View</h2>
-            <h2 class="text-center">&</h2>
-            <h2 class="text-center">Inspect</h2>
-            <h2 class="text-center">Custom Requests</h2>
-            <hr>
-
-            <h3>What is this?</h3>
-            <p>
-              A simple viewer to quickly view and inspect Custom Requests created on the
-              <a href='http://www.landsatfact.com'>Landsat FACT</a> website.
-            </p>
-            <p>
-              Create a Custom request and Give it try!
-            </p>
-          </div><!-- /well -->
+<body>
 
 
-        </div>
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-md-4">
+
+        <div class="well well-lg">
+          <h2 class="text-center">A Simple Way to</h2>
+          <h2 class="text-center">View</h2>
+          <h2 class="text-center">&amp;</h2>
+          <h2 class="text-center">Inspect</h2>
+          <h2 class="text-center">Custom Requests</h2>
+          <hr>
+
+          <h3>What is this?</h3>
+          <p>
+            A simple viewer to quickly view and inspect Custom Requests created on the
+            <a href='http://www.landsatfact.com'>Landsat FACT</a> website.
+          </p>
+          <p>
+            Create a Custom request and Give it try!
+          </p>
+        </div><!-- /well -->
+
+
+      </div>
       <div class="col-md-8">
-
         <div class="thumbnail">
-          <div id='map'>
-            <img class="img-responsive" src="http://placehold.it/748x467" alt="">
-          </div>
-
           <div class="caption-full">
-            <h4 class="pull-right"><span id="theDate">CR:</span></h4>
+            <h4 class="pull-right"><span id="theDate">CR: Daveism's Custom Request</span></h4>
             <h4><a href="#" id="theCRName">Custom Request Change Viewer</a></h4>
-            <div>
-            <label>
-              <input type="checkbox"  value="ndmi"  />
-              NDMI
-            </label>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <label>
-              <input type="checkbox"  value="ndvi"  />
+            <div class="panel panel-default">
+              <div id='map'>
+                <img class="img-responsive" src="http://placehold.it/748x467" alt="">
+              </div>
+            </div>
+            <div  class="pull-right">
+              <span class="pull-right">
+                <button type="button" name="change" class="btn btn-default" onclick="getPevChange()" >
+                  <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+                  Previous change
+                </button>
+                <button type="button" name="change" class="btn btn-default" onclick="getNextChange()" >
+                  Next change
+                  <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+                </button>
+              </span>
+              <p  class="text-center" id="currval"><b>Current Feaure:  </b></p>
+            </div>
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-default active" value="sat" id="basesat" checked >
+                <input type="radio" value="sat" name="change" id="sat" autocomplete="off" >
+                Satellite
+              </label>
+              <label class="btn btn-default" value="map" id="basemap" >
+                <input type="radio" value="map" name="change" id="basemap" autocomplete="off" >
+                Baisc Map
+              </label>
+            </div>
+            <br><br>
+            <hr>
+            <div  class="checkbox-inline">
+              <label class="checkbox-inline">
+                <b>TMS (local)</b>
+              </label>
+              <label class="checkbox-inline">
+                <input type="checkbox"  value="ndmi"  >
+                NDMI
+              </label>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <label class="checkbox-inline">
+                <input type="checkbox"  value="ndvi" >
+                NDVI
+              </label>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <label class="checkbox-inline">
+                <input type="checkbox"  value="swir"  >
+                SWIR
+              </label>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <hr>
+            <div class="checkbox-inline">
+              <label class="checkbox-inline">
+                <b>WMS (server)</b>
+              </label>
+            <label   class="checkbox-inline" >
+              <input type="checkbox"  value="ndviwms"  >
               NDVI
             </label>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <label>
-              <input type="checkbox"  value="swir"  />
-              SWIR
+            <label   class="checkbox-inline" >
+              <input type="checkbox"  value="ndmiwms"  >
+              NDMI
             </label>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <label id="changeLyr">
-              <input type="checkbox"  value="geojsonLayer"  />
+            <label   class="checkbox-inline" >
+              <input type="checkbox"  value="swirwms"  >
+              SWIR
+            </label>
+          </div>
+          <hr>
+          <div>
+            <label class="checkbox-inline">
+              <b>Vector Change Data</b>
+            </label>
+            <label  class="checkbox-inline" id="changeLyr">
+              <input type="checkbox"  value="geojsonLayer"  >
               Change
             </label>
           </div>
           <div>
-
-              <span class="pull-right">
-                <button type="button" name="change" class="btn btn-default" onclick="getNextChange()" >Next change</button>
-                <button type="button" name="change" class="btn btn-default" onclick="getPevChange()" >Previous change</button>
-              </span>
-
-            </div>
-
-
-            <div class="btn-group" data-toggle="buttons">
-              <label class="btn btn-default active" value="sat" id="basesat" >
-                <input type="radio" value="sat" name="change" id="sat" autocomplete="off" checked>
-                 Satellite
-              </label>
-              <label class="btn btn-default" value="map" id="basemap" >
-                <input type="radio" value="map" name="change" id="map" autocomplete="off">
-                Baisc Map
-              </label>
-            </div>
-
-            <div>
-
-              <span  class="pull-right" id="currval">Current Feaure: </span>
-              <p>
-                &nbsp;
-              </p>
-            </div>
-
-
+            <p>
+              &nbsp;
+            </p>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
 
-    <!-- JavaScript -->
-    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-    <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v2.0.2/turf.min.js'></script>
-
-    <script src="js/map.js"></script>
-  </body>
+<!-- JavaScript -->
+<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v2.0.2/turf.min.js'></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/map.js"></script>
+</body>
 </html>

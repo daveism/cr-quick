@@ -1,18 +1,40 @@
-var tmsFolder = '../curtms/';
+var tmsFolder = 'file:///Users/daveism/curtms/';
 var dataFolder = './data/';
 var dataFolder = 'https://raw.githubusercontent.com/daveism/daveisms-assets/master/';
 
-var map = L.tileLayer('http://api.tiles.mapbox.com/v3/daveism.oo0p88l4/{z}/{x}/{y}.png', {
+var swirwms = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/custom-request?AOI_ID=290", {
+  layers: 'swir-th-archive',
+  format: 'image/png',
+  transparent: true,
+  attribution: "Landsat FACT",
+  maxZoom: 15
+});
+
+var ndviwms = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/custom-request?AOI_ID=290", {
+  layers: 'ndvi-archive',
+  format: 'image/png',
+  transparent: true,
+  attribution: "Landsat FACT",
+  maxZoom: 15
+});
+
+var ndmiwms = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/custom-request?AOI_ID=290", {
+  layers: 'ndmi-archive',
+  format: 'image/png',
+  transparent: true,
+  attribution: "Landsat FACT",
+  maxZoom: 15
+});
+
+var basicMap = L.tileLayer('http://api.tiles.mapbox.com/v3/daveism.oo0p88l4/{z}/{x}/{y}.png', {
   attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
   maxZoom: 15
 })
-
 
 var image = L.tileLayer('http://api.tiles.mapbox.com/v3/daveism.oo0o5k97/{z}/{x}/{y}.png', {
   attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
   maxZoom: 15
 })
-
 
 var ndvi = L.tileLayer(tmsFolder + 'ndvi_tms/{z}/{x}/{y}.png', {
   attribution: 'CR image <a href="http://www.landsatfact.com">LSF</a>',
@@ -20,7 +42,6 @@ var ndvi = L.tileLayer(tmsFolder + 'ndvi_tms/{z}/{x}/{y}.png', {
   maxZoom: 15,
   opacity: 0.65
 })
-
 
 var ndmi = L.tileLayer(tmsFolder + 'ndmi_tms/{z}/{x}/{y}.png', {
   attribution: 'CR image <a href="http://www.landsatfact.com">LSF</a>',
@@ -37,77 +58,76 @@ var swir = L.tileLayer(tmsFolder + 'swir_tms/{z}/{x}/{y}.png', {
 });
 
 var baseMaps = {
-    "map": map,
-    "sat": image
+  "map": basicMap,
+  "sat": image
 };
 
 var map = L.map('map',{
   center: [36.730,-81.859],
   zoom: 13,
-  layers: [map,image]
+  layers: [image]
 });
 
 var overlayMaps = {
-    "NDVI": ndvi,
-    "NDMI": ndmi,
-    "SWIR": swir
+  "NDVI": ndvi,
+  "NDMI": ndmi,
+  "SWIR": swir,
+  "SWIR(wms)":swirwms,
+  "NDMI(wms)":ndmiwms,
+  "NDVI(wms)":ndviwms
 };
 
-var ctrl =  L.control.layers(baseMaps, overlayMaps).addTo(map);
-map.removeLayer(map);
- 
 $( "input[type=checkbox]" ).click(function( event ) {
-    layerClicked = window[event.target.value];
-    if (map.hasLayer(layerClicked)) {
-       map.removeLayer(layerClicked);
-    }
-    else{
+  layerClicked = window[event.target.value];
+  if (map.hasLayer(layerClicked)) {
+    map.removeLayer(layerClicked);
+  }
+  else{
+    map.addLayer(layerClicked);
+  } ;
+});
 
-       map.addLayer(layerClicked);
-    } ;
- });
-
- //change geosjson layer
+//change geosjson layer
 $( "#changeLyr[type=button]" ).click(function( event ) {
-   if (map.hasLayer(geojsonLayer)) {
-      map.removeLayer(geojsonLayer);
-   }
-   else{
-      map.addLayer(geojsonLayer);
-   } ;
- });
+  if (map.hasLayer(geojsonLayer)) {
+    map.removeLayer(geojsonLayer);
+  }
+  else{
+    map.addLayer(geojsonLayer);
+  } ;
+});
 
 //base map toggle
 $( ".btn-group label" ).click(function( event ) {
-  map.removeLayer(image);
   if(this.id == 'basesat'){
     map.addLayer(image);
-    map.removeLayer(map);
+    map.removeLayer(basicMap);
   }
   if(this.id == 'basemap'){
-    map.addLayer(map);
+    basicMap.addTo(map);
+    map.addLayer(basicMap);
     map.removeLayer(image);
   }
 });
 
-  var changeCount = 0
-  var curpoint = 0
-  var geoJSON = '';
-  var geojsonLayer;
+var changeCount = 0
+var curpoint = 0
+var geoJSON = '';
+var geojsonLayer;
 
 $.getJSON(dataFolder + "swir_areas.geojson", function(response) {
-    console.log("response", response);
-    geojsonLayer = new L.GeoJSON(response);
-    geojsonLayer.addTo(map);
-    geoJSON = response;
-    changeCount = geoJSON.features.length;
-    map.removeLayer(geojsonLayer);
+  console.log("response", response);
+  geojsonLayer = new L.GeoJSON(response);
+  geojsonLayer.addTo(map);
+  geoJSON = response;
+  changeCount = geoJSON.features.length;
+  map.removeLayer(geojsonLayer);
 });
 
 var getNextChange = function(){
   if(curpoint=>changeCount){
     curpoint++;
-    $("#currval").html('Change Feaute:' + curpoint)
+    $("#currval").html('<b>Change Feauture:</b>&nbsp;&nbsp;' + curpoint)
     var centroidPt = turf.centroid(geoJSON.features[curpoint]);
     console.log(JSON.stringify(centroidPt))
     map.setView([ centroidPt.geometry.coordinates[1] , centroidPt.geometry.coordinates[0]],15);
