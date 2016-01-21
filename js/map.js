@@ -6,7 +6,7 @@ var swirwms = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/custom-requ
   layers: 'swir-th-archive',
   format: 'image/png',
   transparent: true,
-  attribution: "Landsat FACT",
+  attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
   maxZoom: 15
 });
 
@@ -14,7 +14,7 @@ var ndviwms = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/custom-requ
   layers: 'ndvi-archive',
   format: 'image/png',
   transparent: true,
-  attribution: "Landsat FACT",
+  attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
   maxZoom: 15
 });
 
@@ -22,7 +22,7 @@ var ndmiwms = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/custom-requ
   layers: 'ndmi-archive',
   format: 'image/png',
   transparent: true,
-  attribution: "Landsat FACT",
+  attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
   maxZoom: 15
 });
 
@@ -37,21 +37,21 @@ var image = L.tileLayer('http://api.tiles.mapbox.com/v3/daveism.oo0o5k97/{z}/{x}
 })
 
 var ndvi = L.tileLayer(tmsFolder + 'ndvi_tms/{z}/{x}/{y}.png', {
-  attribution: 'CR image <a href="http://www.landsatfact.com">LSF</a>',
+  attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
   tms:true,
   maxZoom: 15,
   opacity: 0.65
 })
 
 var ndmi = L.tileLayer(tmsFolder + 'ndmi_tms/{z}/{x}/{y}.png', {
-  attribution: 'CR image <a href="http://www.landsatfact.com">LSF</a>',
+  attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
   tms:true,
   maxZoom: 15,
   opacity: 0.65
 })
 
 var swir = L.tileLayer(tmsFolder + 'swir_tms/{z}/{x}/{y}.png', {
-  attribution: 'CR image <a href="http://www.landsatfact.com">LSF</a>',
+  attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
   tms:true,
   maxZoom: 15,
   opacity: 0.65
