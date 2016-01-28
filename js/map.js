@@ -1,8 +1,8 @@
 var tmsFolder = 'file:///Users/daveism/curtms/';
 var dataFolder = './data/';
-var dataFolder = 'https://raw.githubusercontent.com/daveism/daveisms-assets/master/';
+var dataFolder = 'https://raw.githubusercontent.com/daveism/cr-quick/gh-pages/data/';
 
-var Date_WMS1 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-swir-allchange?TIME=2015-12-20", {
+var Date_WMS1 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-threshold?AOI_ID=327", {
   layers: 'SWIR-archiveCloudGap',
   format: 'image/png',
   transparent: true,
@@ -10,7 +10,7 @@ var Date_WMS1 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-swir-
   maxZoom: 15
 });
 
-var Date_WMS2 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-swir-allchange?TIME=2015-12-04", {
+var Date_WMS2 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=328", {
   layers: 'SWIR-archiveCloudGap',
   format: 'image/png',
   transparent: true,
@@ -18,7 +18,7 @@ var Date_WMS2 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-swir-
   maxZoom: 15
 });
 
-var Date_WMS3 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-swir-allchange?TIME=2015-10-17", {
+var Date_WMS3 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=329", {
   layers: 'SWIR-archiveCloudGap',
   format: 'image/png',
   transparent: true,
@@ -27,24 +27,24 @@ var Date_WMS3 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-swir-
 });
 
 
-var swirwms = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/custom-request?AOI_ID=290", {
-  layers: 'swir-th-archive',
+var swirwms = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=290", {
+  layers: 'swir-archiveCloudGap',
   format: 'image/png',
   transparent: true,
   attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
   maxZoom: 15
 });
 
-var ndviwms = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/custom-request?AOI_ID=290", {
-  layers: 'ndvi-archive',
+var ndviwms = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-ndvi?AOI_ID=290", {
+  layers: 'ndvi-archiveCloudGap',
   format: 'image/png',
   transparent: true,
   attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
   maxZoom: 15
 });
 
-var ndmiwms = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/custom-request?AOI_ID=290", {
-  layers: 'ndmi-archive',
+var ndmiwms = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-ndmi?AOI_ID=290", {
+  layers: 'ndmi-archiveCloudGap',
   format: 'image/png',
   transparent: true,
   attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
@@ -204,8 +204,10 @@ var getPevChange = function(){
   if(curpoint >=  0){
     curpoint--;
     $("#currval").html('Change Feauture:&nbsp;&nbsp;' + curpoint)
+    var area = turf.area(geoJSON.features[curpoint]);
     var centroidPt = turf.centroid(geoJSON.features[curpoint]);
     console.log(JSON.stringify(centroidPt))
+    console.log(area);
     map.setView([ centroidPt.geometry.coordinates[1] , centroidPt.geometry.coordinates[0]],15);
   }
 }
