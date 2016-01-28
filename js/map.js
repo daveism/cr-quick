@@ -180,6 +180,7 @@ var changeCount = 0
 var curpoint = 0
 var geoJSON = '';
 var geojsonLayer;
+var skipSize = 8000;
 
 $.getJSON(dataFolder + "swir_areas.geojson", function(response) {
   console.log("response", response);
@@ -193,7 +194,7 @@ $.getJSON(dataFolder + "swir_areas.geojson", function(response) {
 var getNextChange = function(){
   if(curpoint=>changeCount){
     curpoint++;
-    $("#currval").html('<b>Change Feauture:</b>&nbsp;&nbsp;' + curpoint)
+    $("#currval").html('<b>Change Feauture:</b>&nbsp;&nbsp;' + curpoint + ' of ' + changeCount)
     areaPush();
     var centroidPt = turf.centroid(geoJSON.features[curpoint]);
     console.log(JSON.stringify(centroidPt))
@@ -204,7 +205,7 @@ var getNextChange = function(){
 var getPevChange = function(){
   if(curpoint >=  0){
     curpoint--;
-    $("#currval").html('Change Feauture:&nbsp;&nbsp;' + curpoint)
+    $("#currval").html('Change Feauture:&nbsp;&nbsp;' + curpoint + ' of ' + changeCount)
 
     areaPop();
     var centroidPt = turf.centroid(geoJSON.features[curpoint]);
@@ -217,7 +218,7 @@ var getPevChange = function(){
 var areaPush = function(){
   var area = turf.area(geoJSON.features[curpoint]);
   console.log(area);
-  if(area<5001){
+  if(area<skipSize){
     curpoint++;
     areaPush()
   }
@@ -226,7 +227,7 @@ var areaPush = function(){
 var areaPop = function(){
   var area = turf.area(geoJSON.features[curpoint]);
   console.log(area);
-  if(area<5001){
+  if(area<skipSize){
     curpoint--;
     areaPop()
   }
