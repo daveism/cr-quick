@@ -217,7 +217,7 @@ var getPevChange = function(){
 var areaPush = function(){
   var area = turf.area(geoJSON.features[curpoint]);
   console.log(area);
-  if(area<3001){
+  if(area<5001){
     curpoint++;
     areaPush()
   }
@@ -226,9 +226,9 @@ var areaPush = function(){
 var areaPop = function(){
   var area = turf.area(geoJSON.features[curpoint]);
   console.log(area);
-  if(area<3001){
+  if(area<5001){
     curpoint--;
-    areaPush()
+    areaPop()
   }
 }
 //$("input[value=Date_WMS3]").click()
