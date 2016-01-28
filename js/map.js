@@ -194,6 +194,7 @@ var getNextChange = function(){
   if(curpoint=>changeCount){
     curpoint++;
     $("#currval").html('<b>Change Feauture:</b>&nbsp;&nbsp;' + curpoint)
+    areaPush();
     var centroidPt = turf.centroid(geoJSON.features[curpoint]);
     console.log(JSON.stringify(centroidPt))
     map.setView([ centroidPt.geometry.coordinates[1] , centroidPt.geometry.coordinates[0]],15);
@@ -204,15 +205,30 @@ var getPevChange = function(){
   if(curpoint >=  0){
     curpoint--;
     $("#currval").html('Change Feauture:&nbsp;&nbsp;' + curpoint)
-    var area = turf.area(geoJSON.features[curpoint]);
+
+    areaPop();
     var centroidPt = turf.centroid(geoJSON.features[curpoint]);
     console.log(JSON.stringify(centroidPt))
-    console.log(area);
     map.setView([ centroidPt.geometry.coordinates[1] , centroidPt.geometry.coordinates[0]],15);
   }
 }
 
 
+var areaPush = function(){
+  var area = turf.area(geoJSON.features[curpoint]);
+  console.log(area);
+  if(area<3001){
+    curpoint++;
+    areaPush()
+  }
+}
 
-
+var areaPop = function(){
+  var area = turf.area(geoJSON.features[curpoint]);
+  console.log(area);
+  if(area<3001){
+    curpoint--;
+    areaPush()
+  }
+}
 //$("input[value=Date_WMS3]").click()
