@@ -180,7 +180,7 @@ var changeCount = 0
 var curpoint = 0
 var geoJSON = '';
 var geojsonLayer;
-var skipSize = 8000;
+var skipSize = 10000;
 
 $.getJSON(dataFolder + "swir_areas.geojson", function(response) {
   console.log("response", response);

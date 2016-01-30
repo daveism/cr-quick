@@ -9,10 +9,10 @@
   <title>Landsat FACT Custom Request - Viewer</title></title>
 
   <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/paper_bootstrap.min.css" rel="stylesheet">
 
   <!-- Add custom CSS here -->
-  <link href="css/shop-item.css" rel="stylesheet">
+  <!-- <link href="css/freelancer.css" rel="stylesheet"> -->
 
   <!-- leaflet js/css -->
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
@@ -20,157 +20,167 @@
   <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 
   <style>
-  #map {  position:relative; width:100%; height: 467px; }
+  #map {  position:relative; width:100%; height: 467px; padding: 0px; margin: 0px;}
+  .panel-body.map{padding:0px}
   </style>
 </head>
 
 <body>
 
-
   <div class="container">
+    <div class="row">
+
+      <div class="col-lg-12">
+        <h3 id="nav-title">Custom Request Viewer</h3>
+        <p class="lead">A simple viewer to quickly view and inspect Custom Requests created on the
+          <a href='http://www.landsatfact.com'>Landsat FACT</a> website.  Create a Custom request and Give it try!
+        </p>
+      </div>
+    </div>
 
     <div class="row">
 
-      <div class="col-md-4">
-
-        <div class="well well-lg">
-          <h2 class="text-center">A Simple Way to</h2>
-          <h2 class="text-center">View</h2>
-          <h2 class="text-center">&amp;</h2>
-          <h2 class="text-center">Inspect</h2>
-          <h2 class="text-center">Custom Requests</h2>
-          <hr>
-
-          <h3>What is this?</h3>
-          <p>
-            A simple viewer to quickly view and inspect Custom Requests created on the
-            <a href='http://www.landsatfact.com'>Landsat FACT</a> website.
-          </p>
-          <p>
-            Create a Custom request and Give it try!
-          </p>
-        </div><!-- /well -->
+      <div class="col-lg-12">
 
 
-      </div>
-      <div class="col-md-8">
-        <div class="thumbnail">
-          <div class="caption-full">
-            <h4 class="pull-right"><span id="theDate">CR: Daveism's Custom Request</span></h4>
-            <h4><a href="#" id="theCRName">Custom Request Change Viewer</a></h4>
-            <div class="panel panel-default">
+          <div class="panel panel-default">
+
+            <div class="panel-body">
+              <p>
+                <span id="theDate" class="pull-right">CR: Daveism's Custom Request</span>
+                <span >Custom Request Change Viewer</span>
+              </p>
+            </div>
+            <div class="panel-body map">
               <div id='map'>
                 <img class="img-responsive" src="http://placehold.it/748x467" alt="">
               </div>
             </div>
-            <div  class="pull-right">
-              <span class="pull-right">
-                <button type="button" name="change" class="btn btn-default" onclick="getPevChange()" >
-                  <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
-                  Previous change
-                </button>
-                <button type="button" name="change" class="btn btn-default" onclick="getNextChange()" >
-                  Next change
-                  <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
-                </button>
-              </span>
-              <p  class="text-center" id="currval"><b>Current Feaure:  </b></p>
-            </div>
-            <div class="btn-group" data-toggle="buttons">
-              <label class="btn btn-default active" value="sat" id="basesat" checked >
-                <input type="radio" value="sat" name="change" id="sat" autocomplete="off" >
-                Satellite
-              </label>
-              <label class="btn btn-default" value="map" id="basemap" >
-                <input type="radio" value="map" name="change" id="basemap" autocomplete="off" >
-                Baisc Map
-              </label>
-            </div>
-            <br><br>
-            <hr>
-            <div  class="checkbox-inline">
-              <label class="checkbox-inline">
-                <b>TMS (local)</b>
-              </label>
-              <label class="checkbox-inline">
-                <input type="checkbox"  value="ndvi" >
-                NDVI
-              </label>
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <label class="checkbox-inline">
-                <input type="checkbox"  value="ndmi"  >
-                NDMI
-              </label>
-              &nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="panel-body">
 
-              <label class="checkbox-inline">
-                <input type="checkbox"  value="swir"  >
-                SWIR
-              </label>
-              &nbsp;&nbsp;&nbsp;&nbsp;
+              <div  class="pull-right">
+                <span class="pull-right">
+                  <label  class="checkbox-inline" id="changeLyr">
+                    <input type="checkbox"  value="geojsonLayer"  >
+                    View Change Area &nbsp;
+                  </label>
+                  <button type="button" name="change" class="btn btn-default" onclick="getPevChange()" >
+                    <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+                    Previous change
+                  </button>
+                  <button type="button" name="change" class="btn btn-default" onclick="getNextChange()" >
+                    Next change
+                    <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+                  </button>
+                </span>
+                <br>
+                <p  class="text-center" id="currval">
+                  <b>Current Feaure:  </b>
+                </p>
+                <p  class="text-center" >
+                  Skips Features greater than <kbd>10,000</kbd> meters.
+                </p>
+              </div>
+              <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-default active" value="sat" id="basesat" checked >
+                  <input type="radio" value="sat" name="change" id="sat" autocomplete="off" >
+                  Satellite
+                </label>
+                <label class="btn btn-default" value="map" id="basemap" >
+                  <input type="radio" value="map" name="change" id="basemap" autocomplete="off" >
+                  Baisc Map
+                </label>
+              </div>
+
+
+
             </div>
-            <hr>
-            <div class="checkbox-inline">
-              <label class="checkbox-inline">
-                <b>WMS (server)</b>
-              </label>
-            <label   class="checkbox-inline" >
-              <input type="checkbox"  value="ndviwms"  >
-              NDVI
-            </label>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <label   class="checkbox-inline" >
-              <input type="checkbox"  value="ndmiwms"  >
-              NDMI
-            </label>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <label   class="checkbox-inline" >
-              <input type="checkbox"  value="swirwms"  >
-              SWIR
-            </label>
+            <div class="panel-body">
+
+              <hr>
+              <div  class="checkbox-inline">
+                <label class="checkbox-inline">
+                  <b>TMS (local)</b>
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox"  value="ndvi" >
+                  NDVI
+                </label>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <label class="checkbox-inline">
+                  <input type="checkbox"  value="ndmi"  >
+                  NDMI
+                </label>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+
+                <label class="checkbox-inline">
+                  <input type="checkbox"  value="swir"  >
+                  SWIR
+                </label>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+              </div>
+
+              <hr>
+              <div class="checkbox-inline">
+                <label class="checkbox-inline">
+                  <b>WMS (server)</b>
+                </label>
+                <label   class="checkbox-inline" >
+                  <input type="checkbox"  value="ndviwms"  >
+                  NDVI
+                </label>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <label   class="checkbox-inline" >
+                  <input type="checkbox"  value="ndmiwms"  >
+                  NDMI
+                </label>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <label   class="checkbox-inline" >
+                  <input type="checkbox"  value="swirwms"  >
+                  SWIR
+                </label>
+              </div>
+
+              <hr>
+              <div class="checkbox-inline">
+                <label class="checkbox-inline">
+                  <b>Swir Animation</b>
+                </label>
+                <label   class="checkbox-inline" >
+                  <input type="checkbox"  value="Date_WMS1"  >
+                  Image 1
+                </label>
+                <label   class="checkbox-inline" >
+                  <input type="checkbox"  value="Date_WMS2"  >
+                  Image 2
+                </label>
+                <label   class="checkbox-inline" >
+                  <input type="checkbox"  value="Date_WMS3"  >
+                  Image 3
+                </label>
+                <label   class="checkbox-inline" >
+                  <input type="checkbox"  value="doAnimate"   >
+                  Animate Images 1-3
+                </label>
+              </div>
+
+              <hr>
+              <div>
+
+              </div>
+
+            </div>
+
           </div>
-          <hr>
-          <div class="checkbox-inline">
-            <label class="checkbox-inline">
-              <b>Swir Animation</b>
-            </label>
-            <label   class="checkbox-inline" >
-              <input type="checkbox"  value="Date_WMS1"  >
-              1
-            </label>
-            <label   class="checkbox-inline" >
-              <input type="checkbox"  value="Date_WMS2"  >
-              2
-            </label>
-            <label   class="checkbox-inline" >
-              <input type="checkbox"  value="Date_WMS3"  >
-              3
-            </label>
-            <label   class="checkbox-inline" >
-              <input type="checkbox"  value="doAnimate"   >
-              Animate
-            </label>
-          </div>
-          <hr>
-          <div>
-            <label class="checkbox-inline">
-              <b>Vector Change Data</b>
-            </label>
-            <label  class="checkbox-inline" id="changeLyr">
-              <input type="checkbox"  value="geojsonLayer"  >
-              Change
-            </label>
-          </div>
-          <div>
-            <p>
-              &nbsp;
-            </p>
-          </div>
-        </div>
+
+
       </div>
+
+
     </div>
+
   </div>
-</div>
+
 
 
 <!-- JavaScript -->

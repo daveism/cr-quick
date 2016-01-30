@@ -35,30 +35,30 @@ ogr2ogr -f 'GeoJSON' $data/swir_areas.geojson $processfolder/swir_areas_raw.geoj
 
 #create local TMS tile map server
 #does not really need a server
-# gdal2tiles.py -w 'all' -z 5-9 -a 255 $processfolder/ndvi_color.tif $tms/ndvi_tms/ &
-# gdal2tiles.py -w 'all' -z 5-9 -a 255 $processfolder/ndmi_color.tif $tms/ndmi_tms/ &
-# gdal2tiles.py -w 'all' -z 5-9 -a 255 $processfolder/swir_color.tif $tms/swir_tms/ &
-#
-# gdal2tiles.py -w 'all' -z 10  -a 255 $processfolder/ndvi_color.tif $tms/ndvi_tms/ &
-# gdal2tiles.py -w 'all' -z 10  -a 255 $processfolder/ndmi_color.tif $tms/ndmi_tms/ &
-# gdal2tiles.py -w 'all' -z 10  -a 255 $processfolder/swir_color.tif $tms/swir_tms/ &
-#
-# gdal2tiles.py -w 'all' -z 11  -a 255 $processfolder/ndvi_color.tif $tms/ndvi_tms/ &
-# gdal2tiles.py -w 'all' -z 11  -a 255 $processfolder/ndmi_color.tif $tms/ndmi_tms/ &
-# gdal2tiles.py -w 'all' -z 11  -a 255 $processfolder/swir_color.tif $tms/swir_tms/ &
-#
-# gdal2tiles.py -w 'all' -z 12  -a 255 $processfolder/ndvi_color.tif $tms/ndvi_tms/ &
-# gdal2tiles.py -w 'all' -z 12  -a 255 $processfolder/ndmi_color.tif $tms/ndmi_tms/ &
-# gdal2tiles.py -w 'all' -z 12  -a 255 $processfolder/swir_color.tif $tms/swir_tms/ &
-#
-# gdal2tiles.py -w 'all' -z 13  -a 255 $processfolder/ndvi_color.tif $tms/ndvi_tms/ &
-# gdal2tiles.py -w 'all' -z 13  -a 255 $processfolder/ndmi_color.tif $tms/ndmi_tms/ &
-# gdal2tiles.py -w 'all' -z 13  -a 255 $processfolder/swir_color.tif $tms/swir_tms/ &
-#
-# gdal2tiles.py -w 'all' -z 14  -a 255 $processfolder/ndvi_color.tif $tms/ndvi_tms/ &
-# gdal2tiles.py -w 'all' -z 14  -a 255 $processfolder/ndmi_color.tif $tms/ndmi_tms/ &
-# gdal2tiles.py -w 'all' -z 14  -a 255 $processfolder/swir_color.tif $tms/swir_tms/ &
-#
-# gdal2tiles.py -w 'all' -z 15  -a 255 $processfolder/ndvi_color.tif $tms/ndvi_tms/ &
-# gdal2tiles.py -w 'all' -z 15  -a 255 $processfolder/ndmi_color.tif $tms/ndmi_tms/ &
-# gdal2tiles.py -w 'all' -z 15  -a 255 $processfolder/swir_color.tif $tms/swir_tms/ &
+gdal2tiles.py -w 'leaflet' -r lanczos -z 5-9 -a 255 $processfolder/ndvi_color.tif $tms/ndvi_tms/ &
+gdal2tiles.py -w 'leaflet' -r lanczos -z 5-9 -a 255 $processfolder/ndmi_color.tif $tms/ndmi_tms/ &
+gdal2tiles.py -w 'leaflet' -r lanczos -z 5-9 -a 255 $processfolder/swir_color.tif $tms/swir_tms/ &
+
+gdal2tiles.py -w 'leaflet' -r lanczos -z 10  -a 255 $processfolder/ndvi_color.tif $tms/ndvi_tms/ &
+gdal2tiles.py -w 'leaflet' -r lanczos -z 10  -a 255 $processfolder/ndmi_color.tif $tms/ndmi_tms/ &
+gdal2tiles.py -w 'leaflet' -r lanczos -z 10  -a 255 $processfolder/swir_color.tif $tms/swir_tms/ &
+
+gdal2tiles.py -w 'leaflet' -r lanczos -z 11  -a 255 $processfolder/ndvi_color.tif $tms/ndvi_tms/ &
+gdal2tiles.py -w 'leaflet' -r lanczos -z 11  -a 255 $processfolder/ndmi_color.tif $tms/ndmi_tms/ &
+gdal2tiles.py -w 'leaflet' -r lanczos -z 11  -a 255 $processfolder/swir_color.tif $tms/swir_tms/ &
+
+gdal2tiles.py -w 'leaflet' -r lanczos -z 12  -a 255 $processfolder/ndvi_color.tif $tms/ndvi_tms/ &
+gdal2tiles.py -w 'leaflet' -r lanczos -z 12  -a 255 $processfolder/ndmi_color.tif $tms/ndmi_tms/ &
+gdal2tiles.py -w 'leaflet' -r lanczos -z 12  -a 255 $processfolder/swir_color.tif $tms/swir_tms/ &
+
+gdal2tiles.py -w 'leaflet' -r lanczos -z 13  -a 255 $processfolder/ndvi_color.tif $tms/ndvi_tms/ &
+gdal2tiles.py -w 'leaflet' -r lanczos -z 13  -a 255 $processfolder/ndmi_color.tif $tms/ndmi_tms/ &
+gdal2tiles.py -w 'leaflet' -r lanczos -z 13  -a 255 $processfolder/swir_color.tif $tms/swir_tms/ &
+
+gdal2tiles.py -w 'leaflet' -r lanczos -z 14  -a 255 $processfolder/ndvi_color.tif $tms/ndvi_tms/ &
+gdal2tiles.py -w 'leaflet' -r lanczos -z 14  -a 255 $processfolder/ndmi_color.tif $tms/ndmi_tms/ &
+gdal2tiles.py -w 'leaflet' -r lanczos -z 14  -a 255 $processfolder/swir_color.tif $tms/swir_tms/ &
+
+gdal2tiles.py -w 'leaflet' -r lanczos -z 15  -a 255 $processfolder/ndvi_color.tif $tms/ndvi_tms/ &
+gdal2tiles.py -w 'leaflet' -r lanczos -z 15  -a 255 $processfolder/ndmi_color.tif $tms/ndmi_tms/ &
+gdal2tiles.py -w 'leaflet' -r lanczos -z 15  -a 255 $processfolder/swir_color.tif $tms/swir_tms/ &
