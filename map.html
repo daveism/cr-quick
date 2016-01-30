@@ -60,10 +60,6 @@
 
               <div  class="pull-right">
                 <span class="pull-right">
-                  <label  class="checkbox-inline" id="changeLyr">
-                    <input type="checkbox"  value="geojsonLayer"  >
-                    View Change Area &nbsp;
-                  </label>
                   <button type="button" name="change" class="btn btn-default" onclick="getPevChange()" >
                     <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
                     Previous change
@@ -74,11 +70,16 @@
                   </button>
                 </span>
                 <br>
+                <em>Skips Features greater than <kbd>10,000</kbd> meters.</em>
+                <br>
                 <p  class="text-center" id="currval">
-                  <b>Current Feaure:  </b>
+                  <b>Centered on Change Feaure: </b>
                 </p>
                 <p  class="text-center" >
-                  Skips Features greater than <kbd>10,000</kbd> meters.
+                  <label  class="checkbox-inline" id="changeLyr">
+                  <input type="checkbox"  value="geojsonLayer"  >
+                   Display Area's of Change on the Map &nbsp;
+                </label>
                 </p>
               </div>
               <div class="btn-group" data-toggle="buttons">
