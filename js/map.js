@@ -188,7 +188,12 @@ $.getJSON(dataFolder + "swir_areas.geojson", function(response) {
   geojsonLayer.addTo(map);
   geoJSON = response;
   changeCount = geoJSON.features.length;
+  //get and zoom to center of all change features
+  var centroidPt = turf.centroid(geoJSON);
+  map.setView([ centroidPt.geometry.coordinates[1] , centroidPt.geometry.coordinates[0]],10);
   map.removeLayer(geojsonLayer);
+
+  $("#loading").css("visibility", "hidden");
 });
 
 var getNextChange = function(){
