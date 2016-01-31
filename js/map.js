@@ -197,7 +197,7 @@ $.getJSON(dataFolder + "swir_areas.geojson", function(response) {
 });
 
 var getNextChange = function(){
-  if(curpoint=>changeCount){
+  if(curpoint <= changeCount){
     curpoint++;
     $("#currval").html('<b>Change Feauture:</b>&nbsp;&nbsp;' + curpoint + ' of ' + changeCount)
     areaPush();
