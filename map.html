@@ -69,7 +69,7 @@
                 <div id="mapLayers" class="list-group text-center" >
                   <h3 class="list-group-item-heading">Map Layers</h3>
                   <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">Local Map Tiles</h4>
+                    <h4 class="list-group-item-heading">Static Map Tiles</h4>
                     <hr>
                     <label class="checkbox-inline">
                       <input type="checkbox"  value="ndvi" >
@@ -87,7 +87,7 @@
                     </label>
                   </a>
                   <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">Remote Server<br>Landsat FACT WMS)</h4>
+                    <h4 class="list-group-item-heading">Remote Server<br>(WMS)</h4>
                     <hr>
                     <label   class="checkbox-inline" >
                       <input type="checkbox"  value="ndviwms"  >
@@ -153,10 +153,11 @@
               <br>
               <form class="form-inline">
                 <div class="form-group">
+                  <br>
               <em>
-                Skips Features greater than
-                    <input type="text" class="form-control  input-sm text-center" id="inputSkipMeters" value="10000" placeholder="10000">
-                meters.
+                Skips features less than
+                    <input type="text" class="form-control  input-sm text-center" id="inputSkipMeters" value="4" placeholder="4">
+                Acres.
               </em>
             </div>
           </form>

@@ -218,7 +218,7 @@ var getPevChange = function(){
 var areaPush = function(){
   var area = turf.area(geoJSON.features[curpoint]);
   console.log(area);
-  var skipSize = $("#inputSkipMeters").val();
+  var skipSize = $("#inputSkipMeters").val()/0.00024711;
   //alert(skipSize)
 
   if(area<skipSize){
@@ -230,7 +230,7 @@ var areaPush = function(){
 var areaPop = function(){
   var area = turf.area(geoJSON.features[curpoint]);
   console.log(area);
-  var skipSize = $("#inputSkipMeters").val();
+  var skipSize = $("#inputSkipMeters").val()/0.00024711;
   if(area<skipSize){
     curpoint--;
     areaPop()
