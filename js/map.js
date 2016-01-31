@@ -180,7 +180,7 @@ var changeCount = 0
 var curpoint = 0
 var geoJSON = '';
 var geojsonLayer;
-var skipSize = 10000;
+// var skipSize = 10000;
 
 $.getJSON(dataFolder + "swir_areas.geojson", function(response) {
   console.log("response", response);
@@ -218,6 +218,9 @@ var getPevChange = function(){
 var areaPush = function(){
   var area = turf.area(geoJSON.features[curpoint]);
   console.log(area);
+  var skipSize = $("#inputSkipMeters").val();
+  //alert(skipSize)
+
   if(area<skipSize){
     curpoint++;
     areaPush()
@@ -227,6 +230,7 @@ var areaPush = function(){
 var areaPop = function(){
   var area = turf.area(geoJSON.features[curpoint]);
   console.log(area);
+  var skipSize = $("#inputSkipMeters").val();
   if(area<skipSize){
     curpoint--;
     areaPop()
