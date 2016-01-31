@@ -21,7 +21,11 @@
 
   <style>
   #map {  position:relative; width:100%; height: 467px; padding: 0px; margin: 0px;}
-  .panel-body.map{padding:0px}
+  #mapLayers{width: 100%; height: 467px;padding: 0px;margin: 0px;}
+  .panel-body.map{padding:0px; margin: 0px;    border: 1px solid #dddddd;}
+  .row.map{padding:0px margin: 0px;}
+  .col-md-4.map{padding-right:0px;margin: 0px;}
+  .col-md-8.map{padding-left:0px;margin: 0px;}
   body (
     padding:-left:50px;
     padding:-right:5opx;
@@ -36,8 +40,12 @@
 
       <div class="col-lg-12">
         <h3 id="nav-title">Custom Request Viewer</h3>
-        <p class="lead">A simple viewer to quickly view and inspect Custom Requests created on the
-          <a href='http://www.landsatfact.com'>Landsat FACT</a> website.  Create a Custom request and Give it try!
+        <p class="lead">
+          A simple viewer to quickly view and inspect Custom Requests created on the
+          <a href='http://www.landsatfact.com'>Landsat FACT</a> website.
+        </p>
+        <p class="lead">
+          Create a Custom Request at <a href="http://www.landsatfact.com/node/add/custom-request" >Landsat FACT</a> and Give it try!
         </p>
       </div>
     </div>
@@ -56,9 +64,79 @@
               </p>
             </div>
             <div class="panel-body map">
-              <div id='map'>
-                <img class="img-responsive" src="http://placehold.it/748x467" alt="">
+
+
+              <div class="row map">
+                <div class="col-md-4 map" >
+                  <div id="mapLayers" class="list-group text-center" >
+                    <a href="#" class="list-group-item">
+                      <h4 class="list-group-item-heading">Local Map Tiles</h4>
+                      <hr>
+                      <label class="checkbox-inline">
+                        <input type="checkbox"  value="ndvi" >
+                        NDVI
+                      </label>
+                      &nbsp;&nbsp;&nbsp;&nbsp;
+                      <label class="checkbox-inline">
+                        <input type="checkbox"  value="ndmi"  >
+                        NDMI
+                      </label>
+                      &nbsp;&nbsp;&nbsp;&nbsp;
+                      <label class="checkbox-inline">
+                        <input type="checkbox"  value="swir"  >
+                        SWIR
+                      </label>
+                    </a>
+                    <a href="#" class="list-group-item">
+                      <h4 class="list-group-item-heading">Remote Server<br>Landsat FACT WMS)</h4>
+                      <hr>
+                      <label   class="checkbox-inline" >
+                        <input type="checkbox"  value="ndviwms"  >
+                        NDVI
+                      </label>
+                      &nbsp;&nbsp;&nbsp;&nbsp;
+                      <label   class="checkbox-inline" >
+                        <input type="checkbox"  value="ndmiwms"  >
+                        NDMI
+                      </label>
+                      &nbsp;&nbsp;&nbsp;&nbsp;
+                      <label   class="checkbox-inline" >
+                        <input type="checkbox"  value="swirwms"  >
+                        SWIR
+                      </label>
+                    </a>
+                    <a href="#" class="list-group-item">
+                      <h4 class="list-group-item-heading">SWIR Animation</h4>
+                      <hr>
+                      <label   class="checkbox-inline" >
+                        <input type="checkbox"  value="Date_WMS1"  >
+                        Image 1
+                      </label>
+                      <label   class="checkbox-inline" >
+                        <input type="checkbox"  value="Date_WMS2"  >
+                        Image 2
+                      </label>
+                      <label   class="checkbox-inline" >
+                        <input type="checkbox"  value="Date_WMS3"  >
+                        Image 3
+                      </label>
+                      <br><br>
+                      <label   class="checkbox-inline" >
+                        <input type="checkbox"  value="doAnimate"   >
+                        Animate Images 1-3
+                      </label>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-md-8 map">
+                  <div id='map'>
+                    <img class="img-responsive" src="http://placehold.it/748x467" alt="">
+                  </div>
+                </div>
               </div>
+
+
+
             </div>
             <div class="panel-body">
 
@@ -102,77 +180,34 @@
             </div>
             <div class="panel-body">
 
-              <hr>
-              <div  class="checkbox-inline">
-                <label class="checkbox-inline">
-                  <b>TMS (local)</b>
-                </label>
-                <label class="checkbox-inline">
-                  <input type="checkbox"  value="ndvi" >
-                  NDVI
-                </label>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <label class="checkbox-inline">
-                  <input type="checkbox"  value="ndmi"  >
-                  NDMI
-                </label>
-                &nbsp;&nbsp;&nbsp;&nbsp;
+              <div class="list-group text-center">
+                <a href="#" class="list-group-item">
+                  <h4 class="list-group-item-heading">Local Map Tiles</h4>
+                  <label class="checkbox-inline">
+                    <input type="checkbox"  value="ndvi" >
+                    NDVI
+                  </label>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <label class="checkbox-inline">
+                    <input type="checkbox"  value="ndmi"  >
+                    NDMI
+                  </label>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <label class="checkbox-inline">
+                    <input type="checkbox"  value="swir"  >
+                    SWIR
+                  </label>
+                </a>
+                <a href="#" class="list-group-item">
 
-                <label class="checkbox-inline">
-                  <input type="checkbox"  value="swir"  >
-                  SWIR
-                </label>
-                &nbsp;&nbsp;&nbsp;&nbsp;
+
+                </a>
+                <a href="#" class="list-group-item">
+
+                </a>
               </div>
 
-              <hr>
-              <div class="checkbox-inline">
-                <label class="checkbox-inline">
-                  <b>WMS (server)</b>
-                </label>
-                <label   class="checkbox-inline" >
-                  <input type="checkbox"  value="ndviwms"  >
-                  NDVI
-                </label>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <label   class="checkbox-inline" >
-                  <input type="checkbox"  value="ndmiwms"  >
-                  NDMI
-                </label>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <label   class="checkbox-inline" >
-                  <input type="checkbox"  value="swirwms"  >
-                  SWIR
-                </label>
-              </div>
 
-              <hr>
-              <div class="checkbox-inline">
-                <label class="checkbox-inline">
-                  <b>Swir Animation</b>
-                </label>
-                <label   class="checkbox-inline" >
-                  <input type="checkbox"  value="Date_WMS1"  >
-                  Image 1
-                </label>
-                <label   class="checkbox-inline" >
-                  <input type="checkbox"  value="Date_WMS2"  >
-                  Image 2
-                </label>
-                <label   class="checkbox-inline" >
-                  <input type="checkbox"  value="Date_WMS3"  >
-                  Image 3
-                </label>
-                <label   class="checkbox-inline" >
-                  <input type="checkbox"  value="doAnimate"   >
-                  Animate Images 1-3
-                </label>
-              </div>
-
-              <hr>
-              <div>
-
-              </div>
 
             </div>
 
