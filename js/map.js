@@ -32,7 +32,8 @@ var swirwms = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir
   format: 'image/png',
   transparent: true,
   attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
-  maxZoom: 15
+  maxZoom: 15,
+  opacity: 0.65
 });
 
 var ndviwms = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-ndvi?AOI_ID=290", {
@@ -40,7 +41,8 @@ var ndviwms = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-ndvi
   format: 'image/png',
   transparent: true,
   attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
-  maxZoom: 15
+  maxZoom: 15,
+  opacity: 0.65
 });
 
 var ndmiwms = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-ndmi?AOI_ID=290", {
@@ -48,7 +50,8 @@ var ndmiwms = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-ndmi
   format: 'image/png',
   transparent: true,
   attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
-  maxZoom: 15
+  maxZoom: 15,
+  opacity: 0.65
 });
 
 var basicMap = L.tileLayer('http://api.tiles.mapbox.com/v3/daveism.oo0p88l4/{z}/{x}/{y}.png', {
@@ -202,6 +205,7 @@ $.getJSON(dataFolder + "swir_areas.geojson", function(response) {
 
 });
 
+//function to move to next change area
 var getNextChange = function(){
   if(curpoint <= changeCount){
     curpoint++;
@@ -225,26 +229,29 @@ var getPevChange = function(){
   }
 }
 
-
+//function to check area and increment count foward
+// for navigating change areas
 var areaPush = function(){
+  //get area from the current feature
   var area = turf.area(geoJSON.features[curpoint]);
-  console.log(area);
+  //get square meters from the acre vaule
   var skipSize = $("#inputSkipMeters").val()/0.00024711;
-  //alert(skipSize)
-
+  //don't increment past max features
   if(area<skipSize){
     curpoint++;
     areaPush()
   }
 }
 
+//function to check area and increment count backward
+// for navigating change areas
 var areaPop = function(){
+  //get area from the current feature
   var area = turf.area(geoJSON.features[curpoint]);
-  console.log(area);
+  //get square meters from the acre vaule
   var skipSize = $("#inputSkipMeters").val()/0.00024711;
   if(area<skipSize){
     curpoint--;
     areaPop()
   }
 }
-//$("input[value=Date_WMS3]").click()
