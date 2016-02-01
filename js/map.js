@@ -30,7 +30,7 @@ var Date_WMS3 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-sw
 });
 
 
-var swirwms = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=290", {
+var swirwms = L.tileLayer.betterWms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=290", {
   layers: 'swir-archiveCloudGap',
   format: 'image/png',
   transparent: true,
@@ -39,7 +39,7 @@ var swirwms = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir
   opacity: 0.65
 });
 
-var ndviwms = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-ndvi?AOI_ID=290", {
+var ndviwms = L.tileLayer.betterWms("http://landsatfact-data-dev.nemac.org/lsf-cr-ndvi?AOI_ID=290", {
   layers: 'ndvi-archiveCloudGap',
   format: 'image/png',
   transparent: true,
@@ -48,7 +48,7 @@ var ndviwms = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-ndvi
   opacity: 0.65
 });
 
-var ndmiwms = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-ndmi?AOI_ID=290", {
+var ndmiwms = L.tileLayer.betterWms("http://landsatfact-data-dev.nemac.org/lsf-cr-ndmi?AOI_ID=290", {
   layers: 'ndmi-archiveCloudGap',
   format: 'image/png',
   transparent: true,
