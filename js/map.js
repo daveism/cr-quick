@@ -7,7 +7,8 @@ var Date_WMS1 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-sw
   format: 'image/png',
   transparent: true,
   attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
-  maxZoom: 15
+  maxZoom: 15,
+  opacity: 0.65
 });
 
 var Date_WMS2 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=328", {
@@ -15,7 +16,8 @@ var Date_WMS2 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-sw
   format: 'image/png',
   transparent: true,
   attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
-  maxZoom: 15
+  maxZoom: 15,
+  opacity: 0.65
 });
 
 var Date_WMS3 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=329", {
@@ -23,7 +25,8 @@ var Date_WMS3 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-sw
   format: 'image/png',
   transparent: true,
   attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
-  maxZoom: 15
+  maxZoom: 15,
+  opacity: 0.65
 });
 
 
@@ -253,5 +256,5 @@ var areaPop = function(){
   if(area<skipSize){
     curpoint--;
     areaPop()
-  }
+  }else{curpoint=1}
 }
