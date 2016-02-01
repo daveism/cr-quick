@@ -167,11 +167,13 @@ $( "#changeLyr[type=button]" ).click(function( event ) {
 $( ".btn-group label" ).click(function( event ) {
   if(this.id == 'basesat'){
     map.addLayer(image);
+    image.bringToBack();
     map.removeLayer(basicMap);
   }
   if(this.id == 'basemap'){
     basicMap.addTo(map);
     map.addLayer(basicMap);
+    basicMap.bringToBack();
     map.removeLayer(image);
   }
 });
@@ -180,7 +182,8 @@ var changeCount = 0
 var curpoint = 0
 var geoJSON = '';
 var geojsonLayer;
-// var skipSize = 10000;
+
+$("#map").css("visibility", "hidden");
 
 $.getJSON(dataFolder + "swir_areas.geojson", function(response) {
   console.log("response", response);
@@ -188,12 +191,15 @@ $.getJSON(dataFolder + "swir_areas.geojson", function(response) {
   geojsonLayer.addTo(map);
   geoJSON = response;
   changeCount = geoJSON.features.length;
+
   //get and zoom to center of all change features
   var centroidPt = turf.centroid(geoJSON);
   map.setView([ centroidPt.geometry.coordinates[1] , centroidPt.geometry.coordinates[0]],10);
   map.removeLayer(geojsonLayer);
 
   $("#loading").css("visibility", "hidden");
+  $("#map").css("visibility", "visible");
+
 });
 
 var getNextChange = function(){
