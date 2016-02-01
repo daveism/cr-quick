@@ -1,4 +1,4 @@
-var tmsFolder = 'file:///Users/daveism/curtms/';
+var tmsFolder = 'https://s3.amazonaws.com/mytms/curtms/';
 var dataFolder = './data/';
 var dataFolder = 'https://raw.githubusercontent.com/daveism/cr-quick/gh-pages/data/';
 
@@ -74,7 +74,7 @@ var ndvi = L.tileLayer(tmsFolder + 'ndvi_tms/{z}/{x}/{y}.png', {
   opacity: 0.65
 })
 
-var ndmi = L.tileLayer('https://s3.amazonaws.com/mytms/curtms/' + 'ndmi_tms/{z}/{x}/{y}.png', {
+var ndmi = L.tileLayer(tmsFolder +  'ndmi_tms/{z}/{x}/{y}.png', {
   attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
   tms:true,
   maxZoom: 15,
