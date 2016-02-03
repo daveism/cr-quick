@@ -2,7 +2,7 @@ var tmsFolder = 'https://s3.amazonaws.com/mytms/curtms/';
 var dataFolder = './data/';
 var dataFolder = 'https://raw.githubusercontent.com/daveism/cr-quick/gh-pages/data/';
 
-var Date_WMS1 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-threshold?AOI_ID=327", {
+var Date_WMS1 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=363", {
   layers: 'SWIR-archiveCloudGap',
   format: 'image/png',
   transparent: true,
@@ -11,7 +11,7 @@ var Date_WMS1 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-sw
   opacity: 0.65
 });
 
-var Date_WMS2 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=328", {
+var Date_WMS2 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=364", {
   layers: 'SWIR-archiveCloudGap',
   format: 'image/png',
   transparent: true,
@@ -20,7 +20,7 @@ var Date_WMS2 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-sw
   opacity: 0.65
 });
 
-var Date_WMS3 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=329", {
+var Date_WMS3 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=365", {
   layers: 'SWIR-archiveCloudGap',
   format: 'image/png',
   transparent: true,
