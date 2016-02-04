@@ -4,7 +4,7 @@ var dataFolder = 'https://raw.githubusercontent.com/daveism/cr-quick/gh-pages/da
 
 //animation image 1
 var Date_WMS1 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=368", {
-  layers: 'SWIR-archiveCloudGap',
+  layers: 'SWIR-archive',
   format: 'image/png',
   transparent: true,
   attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
@@ -14,7 +14,7 @@ var Date_WMS1 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-sw
 
 //animation image 2
 var Date_WMS2 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=369", {
-  layers: 'SWIR-archiveCloudGap',
+  layers: 'SWIR-archive',
   format: 'image/png',
   transparent: true,
   attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
@@ -24,7 +24,7 @@ var Date_WMS2 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-sw
 
 //animation image 3
 var Date_WMS3 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=372", {
-  layers: 'SWIR-archiveCloudGap',
+  layers: 'SWIR-archive',
   format: 'image/png',
   transparent: true,
   attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
@@ -53,8 +53,8 @@ var Date_WMS5 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-sw
 });
 
 //swir wms
-var swirwms = L.tileLayer.betterWms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=368", {
-  layers: 'swir-archiveCloudGap',
+var swirwms  = L.tileLayer.betterWms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=368", {
+  layers: 'swir-archive',
   format: 'image/png',
   transparent: true,
   attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
@@ -64,7 +64,7 @@ var swirwms = L.tileLayer.betterWms("http://landsatfact-data-dev.nemac.org/lsf-c
 
 //ndvi wms
 var ndviwms = L.tileLayer.betterWms("http://landsatfact-data-dev.nemac.org/lsf-cr-ndvi?AOI_ID=368", {
-  layers: 'ndvi-archiveCloudGap',
+  layers: 'ndvi-archive',
   format: 'image/png',
   transparent: true,
   attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
@@ -74,7 +74,7 @@ var ndviwms = L.tileLayer.betterWms("http://landsatfact-data-dev.nemac.org/lsf-c
 
 //ndmi wms
 var ndmiwms = L.tileLayer.betterWms("http://landsatfact-data-dev.nemac.org/lsf-cr-ndmi?AOI_ID=368", {
-  layers: 'ndmi-archiveCloudGap',
+  layers: 'ndmi-archive',
   format: 'image/png',
   transparent: true,
   attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',

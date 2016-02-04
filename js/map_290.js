@@ -31,7 +31,7 @@ var Date_WMS3 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-sw
 
 
 var swirwms = L.tileLayer.betterWms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=290", {
-  layers: 'swir-archiveCloudGap',
+  layers: 'swir-archive',
   format: 'image/png',
   transparent: true,
   attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
