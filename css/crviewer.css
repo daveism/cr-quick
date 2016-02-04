@@ -6,8 +6,8 @@
   background-color: #f9f9f9;
 }
 body {
-  padding:-left:50px;
-  padding:-right:50px;
+  padding-left:50px;
+  padding-right:50px;
 }
 
 .glyphicon.spinning {
