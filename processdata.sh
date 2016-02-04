@@ -30,7 +30,7 @@ gdal_calc.py -A $processfolder/swir_all.tif -B $processfolder/cloud_all.tif  --A
 gdaldem color-relief -of GTiff $processfolder/swir_noclouds_all.tif  $data/swircolor.txt $processfolder/swir_color.tif
 
 gdal_calc.py -A $processfolder/swir_noclouds_all.tif  --A_band=1  --outfile=$processfolder/swir_big.tif --calc="255*(A>168)" --NoDataValue=0
-gdal_polygonize.py $processfolder/swir_big.tif -8 -f 'GeoJSON' $processfolder/swir_areas_raw.geojson
+gdal_polygonize.py $processfolder/swir_big.tif -f 'GeoJSON' $processfolder/swir_areas_raw.geojson -8
 ogr2ogr -f 'GeoJSON' $data/swir_areas.geojson $processfolder/swir_areas_raw.geojson  -t_srs EPSG:4326
 
 #create local TMS tile map server
