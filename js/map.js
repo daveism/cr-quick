@@ -2,7 +2,7 @@ var tmsFolder = 'https://s3.amazonaws.com/mytms/curtms/';
 var dataFolder = './data/';
 var dataFolder = 'https://raw.githubusercontent.com/daveism/cr-quick/gh-pages/data/';
 
-var Date_WMS1 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=363", {
+var Date_WMS1 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=368", {
   layers: 'SWIR-archiveCloudGap',
   format: 'image/png',
   transparent: true,
@@ -11,7 +11,7 @@ var Date_WMS1 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-sw
   opacity: 0.65
 });
 
-var Date_WMS2 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=364", {
+var Date_WMS2 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=369", {
   layers: 'SWIR-archiveCloudGap',
   format: 'image/png',
   transparent: true,
@@ -20,7 +20,7 @@ var Date_WMS2 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-sw
   opacity: 0.65
 });
 
-var Date_WMS3 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=365", {
+var Date_WMS3 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=372", {
   layers: 'SWIR-archiveCloudGap',
   format: 'image/png',
   transparent: true,
@@ -29,8 +29,25 @@ var Date_WMS3 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-sw
   opacity: 0.65
 });
 
+var Date_WMS4 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=370", {
+  layers: 'SWIR-archiveCloudGap',
+  format: 'image/png',
+  transparent: true,
+  attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
+  maxZoom: 15,
+  opacity: 0.65
+});
 
-var swirwms = L.tileLayer.betterWms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=290", {
+var Date_WMS5 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=371", {
+  layers: 'SWIR-archiveCloudGap',
+  format: 'image/png',
+  transparent: true,
+  attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
+  maxZoom: 15,
+  opacity: 0.65
+});
+
+var swirwms = L.tileLayer.betterWms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=368", {
   layers: 'swir-archiveCloudGap',
   format: 'image/png',
   transparent: true,
@@ -39,7 +56,7 @@ var swirwms = L.tileLayer.betterWms("http://landsatfact-data-dev.nemac.org/lsf-c
   opacity: 0.65
 });
 
-var ndviwms = L.tileLayer.betterWms("http://landsatfact-data-dev.nemac.org/lsf-cr-ndvi?AOI_ID=290", {
+var ndviwms = L.tileLayer.betterWms("http://landsatfact-data-dev.nemac.org/lsf-cr-ndvi?AOI_ID=368", {
   layers: 'ndvi-archiveCloudGap',
   format: 'image/png',
   transparent: true,
@@ -48,7 +65,7 @@ var ndviwms = L.tileLayer.betterWms("http://landsatfact-data-dev.nemac.org/lsf-c
   opacity: 0.65
 });
 
-var ndmiwms = L.tileLayer.betterWms("http://landsatfact-data-dev.nemac.org/lsf-cr-ndmi?AOI_ID=290", {
+var ndmiwms = L.tileLayer.betterWms("http://landsatfact-data-dev.nemac.org/lsf-cr-ndmi?AOI_ID=368", {
   layers: 'ndmi-archiveCloudGap',
   format: 'image/png',
   transparent: true,
@@ -121,27 +138,47 @@ $("input[value=doAnimate]").click(function( event ) {
   }
 
   cnt=2;
-  maxCnt=3;
+  maxCnt=5;
 
   (function next() {
       if (!doAnimate) return;
       setTimeout(function() {
             if(cnt===1){
-              map.removeLayer(Date_WMS3)
               map.removeLayer(Date_WMS2)
+              map.removeLayer(Date_WMS3)
+              map.removeLayer(Date_WMS4)
+              map.removeLayer(Date_WMS5)
               map.addLayer(Date_WMS1)
             }
             if(cnt===2){
               map.removeLayer(Date_WMS1)
               map.removeLayer(Date_WMS3)
+              map.removeLayer(Date_WMS4)
+              map.removeLayer(Date_WMS5)
               map.addLayer(Date_WMS2)
             }
             if(cnt===3){
               map.removeLayer(Date_WMS1)
               map.removeLayer(Date_WMS2)
+              map.removeLayer(Date_WMS4)
+              map.removeLayer(Date_WMS5)
               map.addLayer(Date_WMS3)
             }
-            cnt++;
+            if(cnt===4){
+              map.removeLayer(Date_WMS1)
+              map.removeLayer(Date_WMS2)
+              map.removeLayer(Date_WMS3)
+              map.removeLayer(Date_WMS5)
+              map.addLayer(Date_WMS4)
+            }
+            if(cnt===5){
+              map.removeLayer(Date_WMS1)
+              map.removeLayer(Date_WMS2)
+              map.removeLayer(Date_WMS3)
+              map.removeLayer(Date_WMS4)
+              map.addLayer(Date_WMS5)
+            }
+                        cnt++;
             if(cnt===maxCnt){cnt=1}
           next();
       }, 3000);
