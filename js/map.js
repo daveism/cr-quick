@@ -2,6 +2,7 @@ var tmsFolder = 'https://s3.amazonaws.com/mytms/curtms/';
 var dataFolder = './data/';
 var dataFolder = 'https://raw.githubusercontent.com/daveism/cr-quick/gh-pages/data/';
 
+//animation image 1
 var Date_WMS1 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=368", {
   layers: 'SWIR-archiveCloudGap',
   format: 'image/png',
@@ -11,6 +12,7 @@ var Date_WMS1 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-sw
   opacity: 0.65
 });
 
+//animation image 2
 var Date_WMS2 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=369", {
   layers: 'SWIR-archiveCloudGap',
   format: 'image/png',
@@ -20,6 +22,7 @@ var Date_WMS2 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-sw
   opacity: 0.65
 });
 
+//animation image 3
 var Date_WMS3 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=372", {
   layers: 'SWIR-archiveCloudGap',
   format: 'image/png',
@@ -29,6 +32,7 @@ var Date_WMS3 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-sw
   opacity: 0.65
 });
 
+//animation image 4
 var Date_WMS4 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=370", {
   layers: 'SWIR-archiveCloudGap',
   format: 'image/png',
@@ -38,6 +42,7 @@ var Date_WMS4 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-sw
   opacity: 0.65
 });
 
+//animation image 5
 var Date_WMS5 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=371", {
   layers: 'SWIR-archiveCloudGap',
   format: 'image/png',
@@ -47,6 +52,7 @@ var Date_WMS5 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-sw
   opacity: 0.65
 });
 
+//swir wms
 var swirwms = L.tileLayer.betterWms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=368", {
   layers: 'swir-archiveCloudGap',
   format: 'image/png',
@@ -56,6 +62,7 @@ var swirwms = L.tileLayer.betterWms("http://landsatfact-data-dev.nemac.org/lsf-c
   opacity: 0.65
 });
 
+//ndvi wms
 var ndviwms = L.tileLayer.betterWms("http://landsatfact-data-dev.nemac.org/lsf-cr-ndvi?AOI_ID=368", {
   layers: 'ndvi-archiveCloudGap',
   format: 'image/png',
@@ -65,6 +72,7 @@ var ndviwms = L.tileLayer.betterWms("http://landsatfact-data-dev.nemac.org/lsf-c
   opacity: 0.65
 });
 
+//ndmi wms
 var ndmiwms = L.tileLayer.betterWms("http://landsatfact-data-dev.nemac.org/lsf-cr-ndmi?AOI_ID=368", {
   layers: 'ndmi-archiveCloudGap',
   format: 'image/png',
@@ -74,16 +82,19 @@ var ndmiwms = L.tileLayer.betterWms("http://landsatfact-data-dev.nemac.org/lsf-c
   opacity: 0.65
 });
 
+//map box simple map
 var basicMap = L.tileLayer('http://api.tiles.mapbox.com/v3/daveism.oo0p88l4/{z}/{x}/{y}.png', {
   attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
   maxZoom: 15
 })
 
+//map box sat
 var image = L.tileLayer('http://api.tiles.mapbox.com/v3/daveism.oo0o5k97/{z}/{x}/{y}.png', {
   attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
   maxZoom: 15
 })
 
+//ndvi tms
 var ndvi = L.tileLayer(tmsFolder + 'ndvi_tms/{z}/{x}/{y}.png', {
   attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
   tms:true,
@@ -91,6 +102,7 @@ var ndvi = L.tileLayer(tmsFolder + 'ndvi_tms/{z}/{x}/{y}.png', {
   opacity: 0.65
 })
 
+//ndmi tms
 var ndmi = L.tileLayer(tmsFolder +  'ndmi_tms/{z}/{x}/{y}.png', {
   attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
   tms:true,
@@ -98,6 +110,7 @@ var ndmi = L.tileLayer(tmsFolder +  'ndmi_tms/{z}/{x}/{y}.png', {
   opacity: 0.65
 })
 
+//swir tms
 var swir = L.tileLayer(tmsFolder + 'swir_tms/{z}/{x}/{y}.png', {
   attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
   tms:true,
@@ -105,11 +118,13 @@ var swir = L.tileLayer(tmsFolder + 'swir_tms/{z}/{x}/{y}.png', {
   opacity: 0.65
 });
 
+//set base map
 var baseMaps = {
   "map": basicMap,
   "sat": image
 };
 
+//set basics for map
 var map = L.map('map',{
   center: [36.730,-81.859],
   zoom: 13,
@@ -117,6 +132,7 @@ var map = L.map('map',{
   crs: 	L.CRS.EPSG900913
 });
 
+//set overlays for map
 var overlayMaps = {
   "NDVI": ndvi,
   "NDMI": ndmi,
@@ -126,8 +142,12 @@ var overlayMaps = {
   "NDVI(wms)":ndviwms,
   "datewms1":Date_WMS1,
   "datewms2":Date_WMS2,
-  "datewms3":Date_WMS3
+  "datewms3":Date_WMS3,
+  "datewms4":Date_WMS4,
+  "datewms5":Date_WMS5
 };
+
+//start animation
 var doAnimate;
 $("input[value=doAnimate]").click(function( event ) {
   if(doAnimate){
@@ -140,6 +160,7 @@ $("input[value=doAnimate]").click(function( event ) {
   cnt=2;
   maxCnt=5;
 
+//animation (yes a bit of a hack)
   (function next() {
       if (!doAnimate) return;
       setTimeout(function() {
@@ -185,6 +206,7 @@ $("input[value=doAnimate]").click(function( event ) {
   })();
 });
 
+//toggle overlay layers
 $( "input[type=checkbox]" ).click(function( event ) {
   layerClicked = window[event.target.value];
   if (map.hasLayer(layerClicked)) {
@@ -196,7 +218,7 @@ $( "input[type=checkbox]" ).click(function( event ) {
 });
 
 
-//change geosjson layer
+//toggle change geosjson layer
 $( "#changeLyr[type=button]" ).click(function( event ) {
   if (map.hasLayer(geojsonLayer)) {
     map.removeLayer(geojsonLayer);
@@ -221,15 +243,18 @@ $( ".btn-group label" ).click(function( event ) {
   }
 });
 
+//set varriables for navigateing change
 var changeCount = 0
 var curpoint = 0
 var geoJSON = '';
 var geojsonLayer;
 
+//hide map
 $("#map").css("visibility", "hidden");
 
 $.getJSON(dataFolder + "swir_areas.geojson", function(response) {
-  console.log("response", response);
+
+  //load geojson
   geojsonLayer = new L.GeoJSON(response);
   geojsonLayer.addTo(map);
   geoJSON = response;
@@ -240,6 +265,7 @@ $.getJSON(dataFolder + "swir_areas.geojson", function(response) {
   map.setView([ centroidPt.geometry.coordinates[1] , centroidPt.geometry.coordinates[0]],10);
   map.removeLayer(geojsonLayer);
 
+  //once geojson is loaded un hide map and hide loading
   $("#loading").css("visibility", "hidden");
   $("#map").css("visibility", "visible");
 
@@ -250,19 +276,25 @@ var getNextChange = function(){
   if(curpoint <= changeCount){
     curpoint++;
     $("#currval").html('<b>Change Feauture:</b>&nbsp;&nbsp;' + curpoint + ' of ' + changeCount)
+
     areaPush();
+
+    //get centroid of next point
     var centroidPt = turf.centroid(geoJSON.features[curpoint]);
     console.log(JSON.stringify(centroidPt))
     map.setView([ centroidPt.geometry.coordinates[1] , centroidPt.geometry.coordinates[0]],15);
   }
 }
 
+//function to move to previous change area
 var getPevChange = function(){
   if(curpoint >=  0){
     curpoint--;
     $("#currval").html('Change Feauture:&nbsp;&nbsp;' + curpoint + ' of ' + changeCount)
 
     areaPop();
+
+    //get centroid of previous point
     var centroidPt = turf.centroid(geoJSON.features[curpoint]);
     console.log(JSON.stringify(centroidPt))
     map.setView([ centroidPt.geometry.coordinates[1] , centroidPt.geometry.coordinates[0]],15);
