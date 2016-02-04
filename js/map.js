@@ -34,7 +34,7 @@ var Date_WMS3 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-sw
 
 //animation image 4
 var Date_WMS4 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=370", {
-  layers: 'SWIR-archiveCloudGap',
+  layers: 'SWIR-archive',
   format: 'image/png',
   transparent: true,
   attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
@@ -44,7 +44,7 @@ var Date_WMS4 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-sw
 
 //animation image 5
 var Date_WMS5 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=371", {
-  layers: 'SWIR-archiveCloudGap',
+  layers: 'SWIR-archive',
   format: 'image/png',
   transparent: true,
   attribution: '<a href="http://www.landsatfact.com">Landsat FACT</a>',
