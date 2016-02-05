@@ -1,14 +1,13 @@
+//set overlays for map
+var overlayMaps = {
+  "NDVI": ndvi,
+  "NDMI": ndmi,
+  "SWIR": swir,
+  "SWIR(wms)":swirwms,
+  "NDMI(wms)":ndmiwms,
+  "NDVI(wms)":ndviwms
+};
 
-
-//toggle change geosjson layer
-$( "#changeLyr[type=button]" ).click(function( event ) {
-  if (map.hasLayer(geojsonLayer)) {
-    map.removeLayer(geojsonLayer);
-  }
-  else{
-    map.addLayer(geojsonLayer);
-  } ;
-});
 
 //set varriables for navigateing change
 var changeCount = 0
