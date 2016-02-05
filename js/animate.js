@@ -11,7 +11,7 @@ $("input[value=doAnimate]").click(function( event ) {
     $('#image1').prop('checked', true);
   }
 
-  cnt=2;
+  cnt=1;
   maxCnt=5;
 
 //animation (yes a bit of a hack)
@@ -80,8 +80,8 @@ $("input[value=doAnimate]").click(function( event ) {
               $('#image5').prop('checked', true);
             }
                         cnt++;
-            if(cnt===maxCnt){cnt=1}
+            if(cnt===maxCnt+1){cnt=1}
           next();
-      }, 5000);
+      }, 4000);
   })();
 });
