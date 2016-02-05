@@ -1,3 +1,4 @@
+$("#toogle-wms").css("visibility", "visible");
 
 //swir wms
 var swirwms  = L.tileLayer.betterWms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=368", {

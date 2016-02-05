@@ -1,3 +1,4 @@
+//$("#toogle-tms").css("visibility", "visible");
 
 //ndvi tms
 var ndvi = L.tileLayer(tmsFolder + 'ndvi_tms/{z}/{x}/{y}.png', {

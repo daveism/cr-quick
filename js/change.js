@@ -1,3 +1,5 @@
+$("#toogle-change").css("visibility", "visible");
+
 //set overlays for map
 var overlayMaps = {
   "NDVI": ndvi,

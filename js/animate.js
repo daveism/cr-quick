@@ -1,3 +1,4 @@
+$("#toogle-ani").css("visibility", "visible");
 
 //start animation
 var doAnimate;

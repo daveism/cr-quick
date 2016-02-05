@@ -1,3 +1,4 @@
+$("#toogle-time").css("visibility", "visible");
 
 //animation image 1
 var Date_WMS1 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID=368", {
