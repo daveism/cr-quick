@@ -1,4 +1,5 @@
 $("#toogle-change").css("visibility", "visible");
+$("#loading").css("visibility", "visible");
 
 //set overlays for map
 var overlayMaps = {
@@ -36,7 +37,6 @@ $.getJSON(dataFolder + "swir_areas.geojson", function(response) {
   //once geojson is loaded un hide map and hide loading
   $("#loading").css("visibility", "hidden");
   $("#map").css("visibility", "visible");
-
 });
 
 //function to move to next change area
