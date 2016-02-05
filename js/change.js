@@ -93,5 +93,5 @@ var areaPop = function(){
   if(area<skipSize){
     curpoint--;
     areaPop()
-  }else{curpoint=1}
+  }
 }
