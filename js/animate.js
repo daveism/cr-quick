@@ -7,7 +7,7 @@ $("input[value=doAnimate]").click(function( event ) {
   }else{
     doAnimate = true;
     map.addLayer(Date_WMS1);
-    $('#image2').prop('checked', true);
+    $('#image1').prop('checked', true);
   }
 
   cnt=2;
