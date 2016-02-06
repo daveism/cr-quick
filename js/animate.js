@@ -1,10 +1,18 @@
 $("#toogle-ani").css("visibility", "visible");
+$("#setAnimation").css("visibility", "visible");
 
 var cnt=1;
 var maxCnt=5;
 
-//set speed in seconds
-var seconds = 3.5
+//set speed in seconds from user input
+var seconds = $("#animationSeconds").val()
+if (seconds <= 0){
+  seconds = 1;
+}
+if (seconds >= 25 ){
+  seconds = 25;
+}
+
 var millSeconds = seconds * 1000;
 
 //turn off all animation layers
