@@ -41,6 +41,10 @@ $.getJSON(dataFolder + "swir_areas.geojson", function(response) {
 
 //function to move to next change area
 var getNextChange = function(){
+  if(curpoint >= changeCount){
+    curpoint = 0;
+  }
+
   if(curpoint <= changeCount){
     curpoint++;
     $("#currval").html('<b>Change Feauture:</b>&nbsp;&nbsp;' + curpoint + ' of ' + changeCount)
@@ -56,6 +60,9 @@ var getNextChange = function(){
 
 //function to move to previous change area
 var getPevChange = function(){
+  if(curpoint <= 0){
+    curpoint = changeCount;
+  }
   if(curpoint >=  0){
     curpoint--;
     $("#currval").html('Change Feauture:&nbsp;&nbsp;' + curpoint + ' of ' + changeCount)
