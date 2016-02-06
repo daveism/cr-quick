@@ -1,21 +1,23 @@
 $("#toogle-ani").css("visibility", "visible");
 
+var cnt=1;
+var maxCnt=5;
+
+//set speed in seconds
+var seconds = 3.5
+var millSeconds = seconds * 1000;
+
 //turn off all animation layers
 var turnOffall = function(){
-  map.removeLayer(Date_WMS1);
-  $('#image1').prop('checked', false);
+  for(var i = 1; i <= maxCnt; i++){
 
-  map.removeLayer(Date_WMS2);
-  $('#image2').prop('checked', false);
-
-  map.removeLayer(Date_WMS3);
-  $('#image3').prop('checked', false);
-
-  map.removeLayer(Date_WMS4);
-  $('#image4').prop('checked', false);
-
-  map.removeLayer(Date_WMS5);
-  $('#image5').prop('checked', false) ;
+    //uncheck
+    $('#image'+i).prop('checked', false);
+    //get layer
+    var mapLayer = overlayMaps['datewms' + i]
+    //remove layer
+    map.removeLayer(mapLayer);
+  }
 }
 
 //start animation
@@ -24,48 +26,39 @@ $("input[value=doAnimate]").click(function( event ) {
   if(doAnimate){
     doAnimate = false;
   }else{
-    doAnimate = true;
+
+    //do first image imediatly
     map.addLayer(Date_WMS1);
     $('#image1').prop('checked', true);
+
+    //start animation in millSeconds
+    doAnimate = true;
+    cnt++;
   }
 
-  cnt=1;
-  maxCnt=5;
 
-//animation (yes a bit of a hack)
+
+  //animation
   (function next() {
       if (!doAnimate) return;
+
       setTimeout(function() {
-            if(cnt===1){
-              turnOffall();
-              map.addLayer(Date_WMS1);
-              $('#image1').prop('checked', true);
-            }
-            if(cnt===2){
-              turnOffall();
-              map.addLayer(Date_WMS2);
-              $('#image2').prop('checked', true);
-            }
-            if(cnt===3){
-              turnOffall();
-              map.removeLayer(Date_WMS1);
-              $('#image3').prop('checked', true);
-            }
-            if(cnt===4){
-              turnOffall();
-              map.addLayer(Date_WMS4)
-              $('#image4').prop('checked', true);
-            }
-            if(cnt===5){
-              turnOffall();
-              map.addLayer(Date_WMS5);
-              $('#image5').prop('checked', true);
-            }
-            cnt++;
-            if(cnt===maxCnt+1){
-              cnt=1
-            }
-          next();
-      }, 3500);
+        //turn all layers off
+        turnOffall();
+
+        //turn on and check current layer
+        $('#image'+cnt).prop('checked', true);
+        var mapLayer = overlayMaps['datewms' + cnt]
+        map.addLayer(mapLayer);
+        //increment count
+        cnt++;
+
+        //reset if at max
+        if(cnt===maxCnt+1){
+          cnt=1
+        }
+
+        next();
+      }, millSeconds);
   })();
 });
