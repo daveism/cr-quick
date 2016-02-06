@@ -67,6 +67,6 @@ $("input[value=doAnimate]").click(function( event ) {
         }
 
         next();
-      }, millSeconds);
+      }, ($("#animationSeconds").val() * 1000) );
   })();
 });
