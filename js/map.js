@@ -39,7 +39,7 @@ var baseMaps = {
 
 //set basics for map
 var map = L.map('map',{
-  center: [34.649,-86.637],
+  center: [34.269,-87.830],
   zoom: 13,
   layers: [image],
   crs: 	L.CRS.EPSG900913
