@@ -32,8 +32,10 @@ var ndmiwms = L.tileLayer.betterWms("http://landsatfact-data-dev.nemac.org/lsf-c
 
 
 //set overlays for map
-var overlayMaps = {
+var wmsLayers = {
   "SWIR(wms)":swirwms,
   "NDMI(wms)":ndmiwms,
   "NDVI(wms)":ndviwms
 };
+
+overlayMaps.push(wmsLayers);

@@ -51,16 +51,12 @@ var Date_WMS5 = L.tileLayer.wms("http://landsatfact-data-dev.nemac.org/lsf-cr-sw
 });
 
 //set overlays for map
-var overlayMaps = {
-  "NDVI": ndvi,
-  "NDMI": ndmi,
-  "SWIR": swir,
-  "SWIR(wms)":swirwms,
-  "NDMI(wms)":ndmiwms,
-  "NDVI(wms)":ndviwms,
+var timeLayers = {
   "datewms1":Date_WMS1,
   "datewms2":Date_WMS2,
   "datewms3":Date_WMS3,
   "datewms4":Date_WMS4,
   "datewms5":Date_WMS5
 };
+
+overlayMaps.push(timeLayers);

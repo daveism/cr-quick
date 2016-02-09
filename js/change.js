@@ -1,17 +1,6 @@
 $("#toogle-change").css("visibility", "visible");
 $("#loading").css("visibility", "visible");
 
-//set overlays for map
-var overlayMaps = {
-  "NDVI": ndvi,
-  "NDMI": ndmi,
-  "SWIR": swir,
-  "SWIR(wms)":swirwms,
-  "NDMI(wms)":ndmiwms,
-  "NDVI(wms)":ndviwms
-};
-
-
 //set varriables for navigateing change
 var changeCount = 0
 var curpoint = 0

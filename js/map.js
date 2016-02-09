@@ -18,6 +18,7 @@ var Date_WMS4;
 var Date_WMS5;
 
 
+var overlayMaps = []
 
 //map box simple map
 var basicMap = L.tileLayer('http://api.tiles.mapbox.com/v3/daveism.oo0p88l4/{z}/{x}/{y}.png', {

@@ -25,11 +25,10 @@ var swir = L.tileLayer(tmsFolder + 'swir_tms/{z}/{x}/{y}.png', {
 });
 
 //set overlays for map
-var overlayMaps = {
+var tmsLayers = {
   "NDVI": ndvi,
   "NDMI": ndmi,
-  "SWIR": swir,
-  "SWIR(wms)":swirwms,
-  "NDMI(wms)":ndmiwms,
-  "NDVI(wms)":ndviwms
+  "SWIR": swir
 };
+
+overlayMaps.push(tmsLayers);
