@@ -15,9 +15,9 @@ if (seconds >= 25 ){
 
 var millSeconds = seconds * 1000;
 
-var getLayerFromObj = function(){
-  for(var i = 1; i <= overlayMaps.length; i++){
-    var mapLayer = overlayMaps[i]['datewms' + i]
+var getLayerFromObj = function(cnt){
+  for(var x = 1; x <= overlayMaps.length; x++){
+    var mapLayer = overlayMaps[x]['datewms' + cnt]
     if(mapLayer){
       return mapLayer;
       break;
@@ -34,7 +34,7 @@ var turnOffall = function(){
 
     //get layer
     //var mapLayer = overlayMaps[2]['datewms' + i]
-    var mapLayer = getLayerFromObj();
+    var mapLayer = getLayerFromObj(i);
 
     //remove layer
     map.removeLayer(mapLayer);
@@ -69,7 +69,7 @@ $("input[value=doAnimate]").click(function( event ) {
 
         //turn on and check current layer
         $('#image'+cnt).prop('checked', true);
-        var mapLayer = getLayerFromObj();
+        var mapLayer = getLayerFromObj(cnt);
         map.addLayer(mapLayer);
         //increment count
         cnt++;
